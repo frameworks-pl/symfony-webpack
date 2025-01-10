@@ -1,0 +1,17 @@
+services:
+  php:
+    container_name: c-symfony-webpack
+    environment:
+      - PHP_IDE_CONFIG=serverName=localhost
+    build:
+      context: ./
+      dockerfile: ./docker/php/Dockerfile
+    volumes:
+      - ./:/var/www/html
+      # To make xdebug work from unit tests running on container:
+      # 1. Make sure ping host.docker.internal works (last time I had to comment out host.docker.internal in /etc/hosts)
+      # 2. Configure server in PhpStorm as for regular debugging (via browser) - make sure path mappings are correct!
+      # 3. on container where you want to run tests do: export PHP_IDE_CONFIG="serverName=localhost"
+      - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini:ro
+    ports:
+      - 8001:80

@@ -5,7 +5,7 @@
 - npm install --save-dev @babel/plugin-proposal-class-properties
 
 # Run server locally
-- symfony serve
+- docker-compose up --build -d
 
 # Run build
 - npm run dev
