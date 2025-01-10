@@ -1,6 +1,6 @@
 FROM php:8.2-apache
 RUN apt update
-RUN apt install -qq -y vim git unzip iputils-ping libpq-dev sudo net-tools p7zip-full libzip-dev
+RUN apt install -qq -y vim git unzip iputils-ping libpq-dev sudo net-tools p7zip-full libzip-dev nodejs npm
 ENV PHP_MEMORY_LIMIT=256M
 VOLUME /var/www/html
 RUN pecl install xdebug-3.3.2 && docker-php-ext-enable xdebug
