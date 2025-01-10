@@ -1,4 +1,5 @@
 const Encore = require('@symfony/webpack-encore');
+const TerserPlugin = require('terser-webpack-plugin');
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
 // It's useful when you use tools that rely on webpack.config.js file.
@@ -55,6 +56,19 @@ Encore
         config.useBuiltIns = 'usage';
         config.corejs = 3;
     })
+
+    .addPlugin(new TerserPlugin({
+        terserOptions: {
+            compress: {
+                drop_console: true,  // Remove console logs
+            },
+            mangle: true,  // Mangle variable names
+            output: {
+                comments: false,  // Remove comments
+            },
+            toplevel: true,  // Mangle top-level variables
+        }
+    }))
 
     // enables Sass/SCSS support
     //.enableSassLoader()
