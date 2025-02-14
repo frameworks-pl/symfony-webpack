@@ -11,6 +11,18 @@
 - install jquery package: `npm install jquery`
 - include jquery in app.js: `import $ from 'jquery';`
 
+# Adjusting legacy libraries
+old approach
+```
+var fw = fw || {};
+fw.gui = fw.gui || {};
+```
+adjusted
+```
+window.fw = window.fw || {};  // Ensure fw is global
+fw.gui = fw.gui || {};
+```
+
 # Adding obfuscator
 - `npm install terser-webpack-plugin --save-dev` (if not already installed)
 - in webpack.config.js: 

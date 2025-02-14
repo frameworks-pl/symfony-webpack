@@ -1,6 +1,7 @@
 
 import $ from 'jquery';
-const { fw } = require('./fw/fwgrid');
+require('./fw/fwtags');
+require('./fw/fwgrid');
 $(document).ready(function() {
 
     let data = {

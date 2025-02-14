@@ -6,7 +6,7 @@
 //###############################################################################
 
 //namespace
-var fw = fw || {};
+window.fw = window.fw || {};  // Ensure fw is global
 fw.gui = fw.gui || {};
 
 fw.gui.Sorter = function(id, classNames) {

@@ -6,7 +6,7 @@
 //###############################################################################
 'use strict';
 //namespace fw
-var fw = fw || {};
+window.fw = window.fw || {};
 fw.tags = fw.tags || {};
 
 
