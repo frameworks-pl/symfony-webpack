@@ -57,23 +57,24 @@ Encore
         config.corejs = 3;
     })
 
-    .addPlugin(new TerserPlugin({
-        terserOptions: {
+    .configureTerserPlugin(plugin => {
+        plugin.options.extractComments = false; // prevent .LICENSE.txt files
+
+        plugin.options.terserOptions = {
             compress: {
-                drop_console: true,  // Remove console logs
+                drop_console: true,     // removes all console.* calls
+                drop_debugger: true,    // removes debugger statements
+                dead_code: true         // removes unreachable code
             },
             mangle: {
-                toplevel: true,
-                keep_fnames: false,
-                //properties:true //this will mangle members of classes
-
+                toplevel: true,         // mangle top-level names
+                keep_fnames: false      // mangle function names
             },
             format: {
-                comments: false,
+                comments: false         // remove all comments
             }
-        },
-        extractComments: false
-    }))
+        };
+    })
 
     // enables Sass/SCSS support
     //.enableSassLoader()
