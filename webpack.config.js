@@ -62,12 +62,17 @@ Encore
             compress: {
                 drop_console: true,  // Remove console logs
             },
-            mangle: true,  // Mangle variable names
-            output: {
-                comments: false,  // Remove comments
+            mangle: {
+                toplevel: true,
+                keep_fnames: false,
+                //properties:true //this will mangle members of classes
+
             },
-            toplevel: true,  // Mangle top-level variables
-        }
+            format: {
+                comments: false,
+            }
+        },
+        extractComments: false
     }))
 
     // enables Sass/SCSS support
@@ -87,4 +92,5 @@ Encore
     //.autoProvidejQuery()
 ;
 
-module.exports = Encore.getWebpackConfig();
+config = Encore.getWebpackConfig();
+module.exports = config;
